@@ -1,0 +1,361 @@
+@import "tailwindcss";
+
+/* Design System Naklasa (docs: Design_System_Agentic_ERP.md, section 8.1). Values below are copied as-is;
+   the block marked "Accessibility additions" adds tokens for pairs that measured below WCAG AA. */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --radius: 1.5rem;
+  --background: #F4F5F7;
+  --foreground: #111214;
+  --card: #FFFFFF;
+  --card-foreground: #111214;
+  --popover: #FFFFFF;
+  --popover-foreground: #111214;
+  --primary: #1F6BFF;
+  --primary-foreground: #FFFFFF;
+  --secondary: #FFFFFF;
+  --secondary-foreground: #111214;
+  --muted: #ECEDF0;
+  --muted-foreground: #5F646C;
+  --accent: #EEF4FF;
+  --accent-foreground: #1146B5;
+  --destructive: #DC2626;
+  --border: #E2E4E8;
+  --input: #E2E4E8;
+  --ring: #1F6BFF;
+
+  /* Token tambahan di luar standar shadcn */
+  --surface-2: #F4F5F7;
+  --inverse: #111214;
+  --inverse-foreground: #FFFFFF;
+  --success: #16A34A;
+  --success-soft: #E3F8EA;
+  --warning: #D97706;
+  --warning-soft: #FFF4DB;
+  --danger-soft: #FDECEC;
+  --ai: #1F6BFF;
+  --ai-soft: #DCE7FF;
+
+  /* Urutan seri data */
+  --chart-1: #1F6BFF;
+  --chart-2: #0B2A66;
+  --chart-3: #B9CEFF;
+  --chart-4: #111214;
+  --chart-5: #D3D6DB;
+
+  /* Sidebar: item aktif hitam */
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #111214;
+  --sidebar-primary: #111214;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F4F5F7;
+  --sidebar-accent-foreground: #111214;
+  --sidebar-border: #E2E4E8;
+  --sidebar-ring: #1F6BFF;
+
+  /* Accessibility additions (measured):
+     success/warning/destructive as small text on their soft fills were 2.96, 2.92 and 4.23:1;
+     input edges in --input were 1.27:1 (WCAG 1.4.11 needs 3:1); white on the dark-mode primary was 3.70:1. */
+  --success-text: #15803D;      /* 4.51:1 on success-soft, 5.02:1 on card */
+  --warning-text: #B45309;      /* 4.59:1 on warning-soft, 5.02:1 on card */
+  --danger-text: #B91C1C;       /* 5.66:1 on danger-soft, 6.47:1 on card */
+  --danger-solid: #DC2626;      /* white label 4.83:1 */
+  --danger-solid-hover: #B91C1C; /* hover of the solid red button: white 6.47:1 (90% opacity gave 4.30:1) */
+  --primary-solid: #1F6BFF;     /* fill behind white labels: 4.56:1 */
+  --input-border: #858A93;      /* 3.18:1 on background, 3.5:1 on card */
+  --inverse-accent: #8AAEFF;    /* accent text on the black card: 8.55:1 */
+  --inverse-muted: #A9ADB4;     /* older name for --inverse-subtle (was #9EA3AB, the handoff uses #A9ADB4): 8.32:1 */
+  --ai-text: #1146B5;           /* AI label text on ai-soft: 6.59:1 (the doc's --ai gives 3.67:1) */
+
+  /* Inverse palette (handoff: what sits on the black card). Ratios are against --inverse unless named. */
+  --inverse-secondary: #C9CCD2; /* secondary text: 11.65:1, 10.47:1 on inverse-surface */
+  --inverse-subtle: #A9ADB4;    /* labels and tertiary text: 8.32:1, 7.48:1 on inverse-surface */
+  --inverse-surface: #1C1D21;   /* nested tile on the black card (ink-900) */
+  --inverse-raised: #2B2D32;    /* soft chips and buttons, hover of dark fills (ink-800): white 13.78:1 */
+  --inverse-border: #3A3C42;    /* outline buttons and dividers; the label, not the edge, identifies the control */
+  --inverse-success: #86EFAC;   /* 13.35:1, 11.99:1 on inverse-surface; also the toast check */
+  --inverse-danger: #FCA5A5;    /* 9.87:1, 7.26:1 on inverse-raised; edge at 50% */
+  --inverse-ai-soft: #1A2747;   /* AI chip on the black card */
+  --inverse-ai-text: #B9CEFF;   /* 9.36:1 on inverse-ai-soft */
+
+  /* Accent extras (handoff). */
+  --highlight: #FFE7A3;         /* data filled in by a rule, not by AI */
+  --highlight-foreground: #111214; /* 15.36:1 on highlight */
+  --card-hover: #FBFBFC;        /* hover of a card that is one big link */
+  --link: #1557E0;              /* text links (brand-600): 6.05:1 on card, 5.55:1 on background */
+  --link-hover: #1146B5;        /* 8.18:1 on card */
+  --logo-wordmark: #0B1F49;     /* brand navy, logo only (brand guide 23 Okt): 16.07:1 on card, 14.74:1 on background */
+
+  /* Chart additions: the doc's stripe (white 18%) and the gauge's first filled colour. */
+  --chart-stripe: rgb(255 255 255 / 0.18);
+  --gauge-start: var(--chart-3);
+}
+
+.dark {
+  --background: #0E0F11;
+  --foreground: #F2F3F5;
+  --card: #17181B;
+  --card-foreground: #F2F3F5;
+  --popover: #1F2024;
+  --popover-foreground: #F2F3F5;
+  --primary: #3D7FFF;
+  --primary-foreground: #FFFFFF;
+  --secondary: #1F2024;
+  --secondary-foreground: #F2F3F5;
+  --muted: #1F2024;
+  --muted-foreground: #9EA3AB;
+  --accent: #1A2747;
+  --accent-foreground: #B9CEFF;
+  --destructive: #EF4444;
+  --border: #2A2C31;
+  --input: #2A2C31;
+  --ring: #3D7FFF;
+  --surface-2: #1F2024;
+  --inverse: #F2F3F5;
+  --inverse-foreground: #111214;
+  --success: #22C55E;
+  --success-soft: #12301F;
+  --warning: #F59E0B;
+  --warning-soft: #33260C;
+  --danger-soft: #3A1517;
+  --ai: #3D7FFF;
+  --ai-soft: #1A2747;
+  --chart-1: #3D7FFF;
+  --chart-2: #8AAEFF;
+  --chart-3: #1A2747;
+  --chart-4: #F2F3F5;
+  --chart-5: #2A2C31;
+  --sidebar: #17181B;
+  --sidebar-foreground: #F2F3F5;
+  --sidebar-primary: #F2F3F5;
+  --sidebar-primary-foreground: #111214;
+  --sidebar-accent: #1F2024;
+  --sidebar-accent-foreground: #F2F3F5;
+  --sidebar-border: #2A2C31;
+  --sidebar-ring: #3D7FFF;
+
+  --success-text: #22C55E;      /* 6.28:1 on success-soft */
+  --warning-text: #F59E0B;      /* 6.87:1 on warning-soft */
+  --danger-text: #F87171;       /* 5.84:1 on danger-soft, 6.42:1 on card */
+  --danger-solid: #DC2626;
+  --danger-solid-hover: #B91C1C;
+  --primary-solid: #2F6BEF;     /* white label 4.70:1 (the doc's #3D7FFF gave 3.70:1) */
+  --input-border: #737882;      /* 3.67:1 on popover, ~4:1 on card */
+  --inverse-accent: #1557E0;    /* accent text on the light inverse card: 5.45:1 */
+  --inverse-muted: #5F646C;     /* 5.36:1 on #F2F3F5 */
+  --ai-text: #8AAEFF;           /* 6.72:1 on the dark ai-soft (the doc's --ai gives 3.98:1) */
+
+  /* The inverse card is light here, so the palette flips. Success and danger are one step darker than the
+     gap analysis proposed (#15803D, #B91C1C), which gave 3.94:1 on inverse-surface and 4.44:1 on inverse-raised. */
+  --inverse-secondary: #3A3C42; /* 9.93:1 on #F2F3F5, 8.66:1 on inverse-surface */
+  --inverse-subtle: #5F646C;    /* 5.36:1, 4.68:1 on inverse-surface */
+  --inverse-surface: #E2E4E8;
+  --inverse-raised: #D3D6DB;    /* ink label 12.86:1 */
+  --inverse-border: #C9CCD2;
+  --inverse-success: #166534;   /* 6.42:1, 5.60:1 on inverse-surface, 4.89:1 on inverse-raised */
+  --inverse-danger: #991B1B;    /* 7.48:1, 5.70:1 on inverse-raised */
+  --inverse-ai-soft: #DCE7FF;
+  --inverse-ai-text: #1146B5;   /* 6.59:1 on inverse-ai-soft */
+
+  --highlight: #4A3B10;
+  --highlight-foreground: #F2F3F5; /* 9.83:1 on highlight */
+  --card-hover: #1B1C1F;
+  --link: #8AAEFF;              /* brand-600 is 2.93:1 on the dark card; this is 8.10:1, 7.42:1 on surface-2 */
+  --link-hover: #B9CEFF;        /* 11.27:1 on card */
+  --logo-wordmark: #F2F3F5;     /* the text colour: navy is 1.19:1 on the dark canvas */
+
+  /* White 18% vanishes on the light dark-mode series (#F2F3F5, #8AAEFF); a darker stripe keeps series apart.
+     The dark --chart-3 is darker than the empty pills, so the gauge starts from a lifted blue. */
+  --chart-stripe: color-mix(in srgb, var(--background) 38%, transparent);
+  --gauge-start: color-mix(in oklab, var(--chart-1) 30%, var(--chart-3));
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface-2: var(--surface-2);
+  --color-inverse: var(--inverse);
+  --color-inverse-foreground: var(--inverse-foreground);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger-soft: var(--danger-soft);
+  --color-ai: var(--ai);
+  --color-ai-soft: var(--ai-soft);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Accessibility additions */
+  --color-success-text: var(--success-text);
+  --color-warning-text: var(--warning-text);
+  --color-danger-text: var(--danger-text);
+  --color-danger-solid: var(--danger-solid);
+  --color-danger-solid-hover: var(--danger-solid-hover);
+  --color-primary-solid: var(--primary-solid);
+  --color-input-border: var(--input-border);
+  --color-inverse-accent: var(--inverse-accent);
+  --color-inverse-muted: var(--inverse-muted);
+  --color-ai-text: var(--ai-text);
+
+  /* Inverse palette and accent extras */
+  --color-inverse-secondary: var(--inverse-secondary);
+  --color-inverse-subtle: var(--inverse-subtle);
+  --color-inverse-surface: var(--inverse-surface);
+  --color-inverse-raised: var(--inverse-raised);
+  --color-inverse-border: var(--inverse-border);
+  --color-inverse-success: var(--inverse-success);
+  --color-inverse-danger: var(--inverse-danger);
+  --color-inverse-ai-soft: var(--inverse-ai-soft);
+  --color-inverse-ai-text: var(--inverse-ai-text);
+  --color-highlight: var(--highlight);
+  --color-highlight-foreground: var(--highlight-foreground);
+  --color-card-hover: var(--card-hover);
+  --color-link: var(--link);
+  --color-link-hover: var(--link-hover);
+  --color-logo-wordmark: var(--logo-wordmark);
+
+  /* Palet primitif brand untuk data viz */
+  --color-brand-50: #EEF4FF;
+  --color-brand-100: #DCE7FF;
+  --color-brand-200: #B9CEFF;
+  --color-brand-300: #8AAEFF;
+  --color-brand-500: #1F6BFF;
+  --color-brand-600: #1557E0;
+  --color-brand-700: #1146B5;
+  --color-brand-900: #0B2A66;
+
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  /* Handoff radii outside the doc's scale: nested tiles, toasts and trace cards (16); callouts, notes and
+     popover items (14). The handoff's 18 and 22 map to rounded-lg (20) and 10 to rounded-md (12). */
+  --radius-tile: 1rem;
+  --radius-note: 0.875rem;
+
+  --shadow-pop: 0 8px 24px rgb(17 18 20 / 0.08);
+  --shadow-modal: 0 24px 48px rgb(17 18 20 / 0.16);
+
+  --ease-enter: cubic-bezier(0.2, 0, 0, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  /* Type scale (section 3.1) as text-* utilities */
+  --text-display: 2.5rem;
+  --text-display--line-height: 2.75rem;
+  --text-display--letter-spacing: -0.02em;
+  --text-display--font-weight: 600;
+  --text-h1: 2rem;
+  --text-h1--line-height: 2.375rem;
+  --text-h1--letter-spacing: -0.02em;
+  --text-h1--font-weight: 600;
+  --text-h2: 1.5rem;
+  --text-h2--line-height: 1.875rem;
+  --text-h2--font-weight: 600;
+  --text-h3: 1.125rem;
+  --text-h3--line-height: 1.5rem;
+  --text-h3--font-weight: 600;
+  --text-body: 0.875rem;
+  --text-body--line-height: 1.25rem;
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1rem;
+  --text-caption--font-weight: 500;
+  --text-mono: 0.8125rem;
+  --text-mono--line-height: 1.125rem;
+  --text-mono--font-weight: 500;
+
+  /* Sizes the handoff uses beyond section 3.1 (utils.ts tells tailwind-merge about them). */
+  --text-body-sm: 0.8125rem;              /* 13/18: secondary text, sm and compact buttons */
+  --text-body-sm--line-height: 1.125rem;
+  --text-micro: 0.6875rem;                /* 11/16 600: badges, tags, xs buttons */
+  --text-micro--line-height: 1rem;
+  --text-micro--font-weight: 600;
+  --text-lead: 0.9375rem;                 /* 15/23: lead paragraphs, lg buttons */
+  --text-lead--line-height: 1.4375rem;
+  --text-title: 1rem;                     /* 16/22 600: sub-card and group titles */
+  --text-title--line-height: 1.375rem;
+  --text-title--font-weight: 600;
+  --text-title-lg: 1.25rem;               /* 20/26 600: panel and modal titles */
+  --text-title-lg--line-height: 1.625rem;
+  --text-title-lg--font-weight: 600;
+  --text-value: 1.375rem;                 /* 22/28 600: value in a nested tile */
+  --text-value--line-height: 1.75rem;
+  --text-value--font-weight: 600;
+  --text-kpi: 2.25rem;                    /* 36/42 600: KPI in a large stat card */
+  --text-kpi--line-height: 2.625rem;
+  --text-kpi--letter-spacing: -0.02em;
+  --text-kpi--font-weight: 600;
+  --text-kpi-sm: 1.875rem;                /* 30/36 600: KPI in a narrow stat card */
+  --text-kpi-sm--line-height: 2.25rem;
+  --text-kpi-sm--letter-spacing: -0.02em;
+  --text-kpi-sm--font-weight: 600;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/40;
+  }
+  html {
+    @apply bg-background;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased text-body;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0ms !important;
+    }
+  }
+}
+
+/* Arsiran diagonal khas referensi */
+@utility bg-stripes {
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgb(255 255 255 / 0.18) 0 2px,
+    transparent 2px 7px
+  );
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
