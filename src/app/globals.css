@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens, "Urbanist" direction chosen by Baskara (2026-11-01).
+ * Palette: Alice Blue, Honeydew, Vanilla (pastel surfaces only, never text),
+ * Eerie Black for text and primary actions, Ghost White canvas.
+ * Semantic text colours are darkened to keep >= 4.5:1 contrast on their pastel backgrounds.
+ */
+@theme {
+  --color-ink: #212121;
+  --color-ink-soft: #46464d;
+  --color-ink-muted: #66666f;
+  --color-canvas: #f6f5fa;
+  --color-surface: #ffffff;
+  --color-surface-deep: #ecebf2;
+  --color-hairline: #e2e1ea;
+
+  --color-sky: #d8dfe9;
+  --color-mint: #cfdeca;
+  --color-butter: #eff0a3;
+
+  --color-danger: #a1382b;
+  --color-danger-quiet: #f6dcd8;
+  --color-warning: #5c5300;
+  --color-warning-quiet: #eff0a3;
+  --color-success: #2f5e2a;
+  --color-success-quiet: #cfdeca;
+
+  --font-display: var(--font-urbanist), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: var(--font-urbanist), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius-card: 1.75rem;
+  --radius-tile: 1.25rem;
+
+  --shadow-sheet: 0 -8px 32px rgb(33 33 33 / 0.12);
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+h1,
+h2 {
+  text-wrap: balance;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+dialog::backdrop {
+  background: rgb(33 33 33 / 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
