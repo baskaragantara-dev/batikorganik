@@ -18,7 +18,7 @@ export default function AppLayout({ children }: LayoutProps<"/">) {
           <SideNav />
         </aside>
         <div className="flex min-w-0 flex-1 flex-col">
-          <header className="sticky top-0 z-20 flex items-center justify-between bg-surface-warm/95 px-5 pt-[calc(0.75rem+env(safe-area-inset-top,0px))] pb-3 backdrop-blur lg:hidden">
+          <header className="sticky top-0 z-20 flex items-center justify-between bg-canvas/95 px-5 pt-[calc(0.75rem+env(safe-area-inset-top,0px))] pb-3 backdrop-blur lg:hidden">
             <Wordmark />
           </header>
           <main

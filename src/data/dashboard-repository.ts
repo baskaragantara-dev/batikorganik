@@ -1,7 +1,7 @@
 import "server-only";
 import type { ApprovalItem, Member } from "@/domain/approvals/types";
-import type { DashboardAlert, DashboardKpis } from "@/domain/dashboard/types";
-import { ALERTS, APPROVALS, CURRENT_MEMBER_ID, KPIS, MEMBERS, MOCK_NOW } from "./mock/seed";
+import type { DashboardAlert, DashboardKpis, Period, TrendPoint } from "@/domain/dashboard/types";
+import { ALERTS, APPROVALS, CURRENT_MEMBER_ID, KPIS, MEMBERS, MOCK_NOW, TREND } from "./mock/seed";
 import type { DemoMode } from "./demo-mode";
 
 export interface DashboardData {
@@ -9,7 +9,8 @@ export interface DashboardData {
   currentMember: Member;
   members: Member[];
   approvals: ApprovalItem[];
-  kpis: DashboardKpis;
+  kpis: Record<Period, DashboardKpis>;
+  trend: Record<Period, TrendPoint[]>;
   alerts: DashboardAlert[];
 }
 
@@ -43,6 +44,7 @@ export async function getDashboardData(mode: DemoMode): Promise<DashboardData> {
     members: MEMBERS,
     approvals: empty ? APPROVALS.filter((a) => a.status !== "pending") : APPROVALS,
     kpis: KPIS,
+    trend: TREND,
     alerts: empty ? [] : ALERTS,
   };
 }

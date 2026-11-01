@@ -68,3 +68,6 @@ export const SparkIcon = (p: IconProps) => (
 export const RefreshIcon = (p: IconProps) => (
   <Base {...p}><path d="M19 12a7 7 0 1 1-2.1-5" /><path d="M19 4.5V8h-3.5" /></Base>
 );
+export const ArrowUpRightIcon = (p: IconProps) => (
+  <Base {...p}><path d="M7 17 17 7M9 7h8v8" /></Base>
+);

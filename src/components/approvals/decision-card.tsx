@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Chip, type ChipTone } from "@/components/ui/chip";
 import { ShieldIcon, SparkIcon } from "@/components/ui/icons";
 
-const RISK_TONE: Record<RiskLevel, ChipTone> = { high: "danger", medium: "warning", low: "neutral" };
+const RISK_TONE: Record<RiskLevel, ChipTone> = { high: "danger", medium: "butter", low: "neutral" };
 
 export function DecisionCard({
   item,
@@ -39,21 +39,21 @@ export function DecisionCard({
     <article aria-labelledby={titleId} aria-busy={busy} className="flex gap-3 rounded-card bg-surface p-5">
       {leading}
       <div className="flex min-w-0 flex-1 flex-col gap-3">
-        <p className="flex items-center gap-1.5 text-xs font-bold tracking-wide text-ink-muted uppercase">
+        <p className="flex items-center gap-1.5 text-xs font-semibold tracking-wide text-ink-muted uppercase">
           <SparkIcon width={14} height={14} />
           {KIND_LABEL[item.kind]} · {item.agent}
         </p>
-        <h3 id={titleId} className="text-base leading-snug font-bold">
+        <h3 id={titleId} className="text-base leading-snug font-semibold">
           {item.title}
         </h3>
         <p className={`text-sm text-ink-soft ${compact ? "line-clamp-2" : ""}`}>{item.summary}</p>
 
         <div className="flex flex-wrap gap-1.5">
           <Chip tone={RISK_TONE[item.risk]}>{RISK_LABEL[item.risk]}</Chip>
-          <Chip tone={deadline.overdue || deadline.dueToday ? "soga" : "neutral"}>
+          <Chip tone={deadline.overdue || deadline.dueToday ? "butter" : "neutral"}>
             {deadline.overdue ? deadline.text : `Tenggat ${deadline.text.toLowerCase()}`}
           </Chip>
-          {compact ? null : <Chip tone="indigo">Brand fit {item.brandFit}</Chip>}
+          {compact ? null : <Chip tone="sky">Brand fit {item.brandFit}</Chip>}
           {item.amountIdr !== undefined ? <Chip>{formatIdr(item.amountIdr)}</Chip> : null}
         </div>
 
@@ -65,7 +65,7 @@ export function DecisionCard({
           >
             <ShieldIcon className="mt-0.5 shrink-0" width={18} height={18} />
             <span className={compact ? "line-clamp-3" : undefined}>
-              <strong className="font-bold">
+              <strong className="font-semibold">
                 {item.compliance.level === "blocker" ? "Compliance: wajib diperbaiki. " : "Compliance: perlu dicek. "}
               </strong>
               {item.compliance.text}

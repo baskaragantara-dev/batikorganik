@@ -50,8 +50,8 @@ Aturan bisnis ada di `src/domain`, bukan di komponen. Contoh: `checkCanDecide` m
 
 ## Design token
 
-Token ada di `src/app/globals.css` (Tailwind v4 `@theme`), gaya "A. Kain Krem".
+Token ada di `src/app/globals.css` (Tailwind v4 `@theme`), gaya "Urbanist" pilihan Baskara.
 
-- Warna brand dan huruf (Newsreader untuk judul, Karla untuk teks) mengikuti token situs company profile Batik Organik.
-- Warna status (bahaya, peringatan, sukses) diturunkan dari pewarna alam dan dicek kontras teksnya minimal 4,5:1.
-- Logo masih wordmark teks sementara (`src/components/layout/wordmark.tsx`). Ganti dengan file logo resmi di `public/brand/` bila sudah tersedia.
+- Palet: Alice Blue `#D8DFE9`, Honeydew `#CFDECA`, Vanilla `#EFF0A3` untuk permukaan pastel (tidak untuk teks), Eerie Black `#212121` untuk teks dan tombol utama, Ghost White `#F6F5FA` untuk latar. Huruf: Urbanist.
+- Warna status (bahaya, peringatan, sukses) digelapkan agar kontras teksnya minimal 4,5:1 di atas latar pastel.
+- Logo masih wordmark teks sementara (`src/components/layout/wordmark.tsx`). Ganti dengan file logo resmi Batik Organik di `public/brand/` bila sudah tersedia.

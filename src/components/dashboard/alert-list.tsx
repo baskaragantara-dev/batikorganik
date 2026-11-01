@@ -17,7 +17,7 @@ export function AlertList({ alerts }: { alerts: DashboardAlert[] }) {
         >
           <AlertIcon className="mt-0.5 shrink-0" />
           <span className="flex min-w-0 flex-1 flex-col">
-            <span className="font-bold">{a.title}</span>
+            <span className="font-semibold">{a.title}</span>
             <span className="text-sm opacity-90">{a.detail}</span>
           </span>
           <ArrowRightIcon className="mt-0.5 shrink-0" />

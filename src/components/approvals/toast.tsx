@@ -21,7 +21,7 @@ export function DecisionToast() {
       {toast ? (
         <p
           key={toast.id}
-          className={`pointer-events-auto max-w-md rounded-full px-5 py-3 text-sm font-bold shadow-sheet ${
+          className={`pointer-events-auto max-w-md rounded-full px-5 py-3 text-sm font-semibold shadow-sheet ${
             toast.tone === "success" ? "bg-ink text-surface" : "bg-danger text-surface"
           }`}
         >

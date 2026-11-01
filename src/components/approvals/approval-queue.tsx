@@ -94,7 +94,7 @@ export function ApprovalQueue({
               aria-selected={active}
               aria-controls="approval-panel"
               onClick={() => setTab(status)}
-              className={`flex min-h-11 items-center justify-center gap-1.5 rounded-full px-2 text-sm font-bold ${
+              className={`flex min-h-11 items-center justify-center gap-1.5 rounded-full px-2 text-sm font-semibold ${
                 active ? "bg-ink text-surface" : "bg-surface text-ink-soft"
               }`}
             >
@@ -109,7 +109,7 @@ export function ApprovalQueue({
 
       <div id="approval-panel" role="tabpanel" aria-labelledby={`tab-${tab}`} className="flex flex-col gap-3">
         {tab === "pending" && decidable.length > 1 ? (
-          <label className="flex min-h-11 items-center gap-3 px-1 text-sm font-bold text-ink-soft">
+          <label className="flex min-h-11 items-center gap-3 px-1 text-sm font-semibold text-ink-soft">
             <input
               type="checkbox"
               className="size-5 accent-ink"
@@ -151,10 +151,10 @@ export function ApprovalQueue({
                 </li>
               ) : (
                 <li key={item.id} className="flex flex-col gap-2 rounded-card bg-surface p-5">
-                  <p className="text-xs font-bold tracking-wide text-ink-muted uppercase">
+                  <p className="text-xs font-semibold tracking-wide text-ink-muted uppercase">
                     {KIND_LABEL[item.kind]} · {item.agent}
                   </p>
-                  <h3 className="font-bold">{item.title}</h3>
+                  <h3 className="font-semibold">{item.title}</h3>
                   <div className="flex flex-wrap items-center gap-2 text-xs text-ink-muted">
                     <Chip tone={item.status === "approved" ? "success" : "danger"}>
                       {item.status === "approved" ? "Disetujui" : "Ditolak"}
@@ -176,7 +176,7 @@ export function ApprovalQueue({
       {tab === "pending" && selectedItems.length > 0 ? (
         <div className="fixed inset-x-0 z-30 px-4 bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] lg:bottom-6">
           <div className="mx-auto flex max-w-xl items-center gap-2 rounded-full bg-ink p-2 pl-5 text-surface shadow-sheet">
-            <span className="flex-1 text-sm font-bold">{selectedItems.length} dipilih</span>
+            <span className="flex-1 text-sm font-semibold">{selectedItems.length} dipilih</span>
             <Button variant="inverse-outline" onClick={() => flow.startReject(selectedItems)}>
               Tolak
             </Button>

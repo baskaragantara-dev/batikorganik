@@ -64,7 +64,7 @@ export function RejectDialog({
           </h2>
           <p className="text-sm text-ink-soft">{subject}</p>
         </div>
-        <label htmlFor={fieldId} className="text-sm font-bold">
+        <label htmlFor={fieldId} className="text-sm font-semibold">
           Alasan untuk agent
         </label>
         <textarea
@@ -76,11 +76,11 @@ export function RejectDialog({
           aria-invalid={error ? true : undefined}
           aria-describedby={error ? errorId : undefined}
           placeholder="Contoh: klaim organik belum ada sertifikat, ganti jadi pewarna alami."
-          className="rounded-tile border border-hairline bg-surface-warm p-3 text-base outline-none focus:border-indigo"
+          className="rounded-tile border border-hairline bg-canvas p-3 text-base outline-none focus:border-ink"
           autoFocus
         />
         {error ? (
-          <p id={errorId} className="text-sm font-bold text-danger">
+          <p id={errorId} className="text-sm font-semibold text-danger">
             {error}
           </p>
         ) : null}

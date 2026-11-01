@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { DecisionSection } from "@/components/approvals/decision-section";
 import { AlertList } from "@/components/dashboard/alert-list";
 import { DashboardSkeleton } from "@/components/dashboard/dashboard-skeleton";
-import { KpiGrid } from "@/components/dashboard/kpi-grid";
+import { PerformanceSection } from "@/components/dashboard/performance-section";
 import { getDashboardData } from "@/data/dashboard-repository";
 import { parseDemoMode } from "@/data/demo-mode";
 import { formatLongDate, greetingFor } from "@/lib/format";
@@ -26,8 +26,9 @@ async function Ringkasan({ searchParams }: Pick<PageProps<"/">, "searchParams">)
     <div className="flex flex-col gap-8">
       <header className="flex flex-col gap-1">
         <p className="text-sm text-ink-muted">{formatLongDate(now)} · data contoh</p>
-        <h1 className="font-display text-4xl leading-tight font-normal lg:text-5xl">
-          {greetingFor(now)}, {data.currentMember.name}
+        <h1 className="max-w-xl text-[2rem] leading-[1.15] font-medium tracking-tight lg:text-5xl">
+          {greetingFor(now)}, {data.currentMember.name}.{" "}
+          <span className="text-ink-muted">Ini yang terjadi di Batik Organik.</span>
         </h1>
       </header>
 
@@ -41,12 +42,7 @@ async function Ringkasan({ searchParams }: Pick<PageProps<"/">, "searchParams">)
         simulateFailure={mode === "action-error"}
       />
 
-      <section aria-labelledby="angka-utama" className="flex flex-col gap-4">
-        <h2 id="angka-utama" className="font-display text-2xl font-medium">
-          Angka utama
-        </h2>
-        <KpiGrid kpis={data.kpis} />
-      </section>
+      <PerformanceSection kpis={data.kpis} trend={data.trend} />
     </div>
   );
 }

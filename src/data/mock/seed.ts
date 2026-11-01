@@ -1,5 +1,5 @@
 import type { ApprovalItem, Member } from "@/domain/approvals/types";
-import type { DashboardAlert, DashboardKpis } from "@/domain/dashboard/types";
+import type { DashboardAlert, DashboardKpis, Period, TrendPoint } from "@/domain/dashboard/types";
 
 /**
  * Sample data for the R0 prototype. All figures are examples, not Batik Organik's real numbers.
@@ -158,15 +158,63 @@ export const APPROVALS: ApprovalItem[] = [
   },
 ];
 
-export const KPIS: DashboardKpis = {
-  spendIdr: 2_840_000,
-  budgetIdr: 4_600_000,
-  leadsThisWeek: 47,
-  leadsLastWeek: 38,
-  cplIdr: 22_800,
-  cplLimitIdr: 25_000,
-  ordersFromAds: 6,
-  revenueFromAdsIdr: 9_350_000,
+export const KPIS: Record<Period, DashboardKpis> = {
+  today: {
+    spendIdr: 152_000,
+    budgetIdr: 155_000,
+    leads: 9,
+    leadsPrev: 6,
+    cplIdr: 16_900,
+    cplLimitIdr: 25_000,
+    ordersFromAds: 1,
+    revenueFromAdsIdr: 1_450_000,
+  },
+  week: {
+    spendIdr: 1_020_000,
+    budgetIdr: 1_085_000,
+    leads: 47,
+    leadsPrev: 38,
+    cplIdr: 21_700,
+    cplLimitIdr: 25_000,
+    ordersFromAds: 3,
+    revenueFromAdsIdr: 4_200_000,
+  },
+  month: {
+    spendIdr: 2_840_000,
+    budgetIdr: 4_600_000,
+    leads: 131,
+    leadsPrev: 104,
+    cplIdr: 22_800,
+    cplLimitIdr: 25_000,
+    ordersFromAds: 6,
+    revenueFromAdsIdr: 9_350_000,
+  },
+};
+
+export const TREND: Record<Period, TrendPoint[]> = {
+  today: [
+    { label: "06", leads: 0, orders: 0 },
+    { label: "09", leads: 2, orders: 0 },
+    { label: "12", leads: 3, orders: 1 },
+    { label: "15", leads: 1, orders: 0 },
+    { label: "18", leads: 2, orders: 0 },
+    { label: "21", leads: 1, orders: 0 },
+  ],
+  week: [
+    { label: "Sen", leads: 5, orders: 0 },
+    { label: "Sel", leads: 8, orders: 1 },
+    { label: "Rab", leads: 6, orders: 0 },
+    { label: "Kam", leads: 9, orders: 1 },
+    { label: "Jum", leads: 7, orders: 0 },
+    { label: "Sab", leads: 3, orders: 0 },
+    { label: "Min", leads: 9, orders: 1 },
+  ],
+  month: [
+    { label: "Mg 1", leads: 24, orders: 1 },
+    { label: "Mg 2", leads: 31, orders: 1 },
+    { label: "Mg 3", leads: 29, orders: 2 },
+    { label: "Mg 4", leads: 47, orders: 2 },
+  ],
 };
 
 export const ALERTS: DashboardAlert[] = [

@@ -13,9 +13,10 @@ export function DashboardSkeleton() {
         <Skeleton className="h-56 rounded-card" />
         <Skeleton className="h-56 rounded-card" />
       </div>
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+      <Skeleton className="h-52 rounded-card" />
+      <div className="grid grid-cols-2 gap-3">
         {Array.from({ length: 4 }, (_, i) => (
-          <Skeleton key={i} className="h-28" />
+          <Skeleton key={i} className="h-36" />
         ))}
       </div>
     </div>

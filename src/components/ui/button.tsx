@@ -13,7 +13,7 @@ const VARIANT: Record<Variant, string> = {
 };
 
 export function buttonClass(variant: Variant = "primary", extra = ""): string {
-  return `inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 text-sm font-bold transition-colors disabled:cursor-not-allowed ${VARIANT[variant]} ${extra}`;
+  return `inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 text-sm font-semibold transition-colors disabled:cursor-not-allowed ${VARIANT[variant]} ${extra}`;
 }
 
 export function Button({

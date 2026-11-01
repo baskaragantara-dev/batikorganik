@@ -37,11 +37,11 @@ export function DecisionSection({
         <h2 id="perlu-keputusan" className="font-display text-2xl font-medium">
           Perlu keputusan Anda
           {pending.length > 0 ? (
-            <span className="ml-2 align-middle font-sans text-sm font-bold text-soga">{pending.length}</span>
+            <span className="ml-2 align-middle font-sans text-sm font-semibold text-ink-muted">{pending.length}</span>
           ) : null}
         </h2>
         {pending.length > 0 ? (
-          <Link href="/approval" className="flex shrink-0 items-center gap-1 text-sm font-bold text-indigo-deep">
+          <Link href="/approval" className="flex shrink-0 items-center gap-1 text-sm font-semibold text-ink">
             Semua <ArrowRightIcon width={16} height={16} />
           </Link>
         ) : null}
@@ -72,7 +72,7 @@ export function DecisionSection({
       {pending.length > top.length ? (
         <Link
           href="/approval"
-          className="flex min-h-11 items-center justify-center gap-2 rounded-full border border-hairline text-sm font-bold"
+          className="flex min-h-11 items-center justify-center gap-2 rounded-full border border-hairline text-sm font-semibold"
         >
           Lihat {pending.length - top.length} permintaan lain <ArrowRightIcon width={16} height={16} />
         </Link>

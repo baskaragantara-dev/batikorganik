@@ -19,11 +19,11 @@ export function BottomNav() {
               <Link
                 href={href}
                 aria-current={active ? "page" : undefined}
-                className={`flex min-h-16 flex-col items-center justify-center gap-1 text-[0.7rem] font-bold ${
+                className={`flex min-h-16 flex-col items-center justify-center gap-1 text-[0.7rem] font-semibold ${
                   active ? "text-ink" : "text-ink-muted"
                 }`}
               >
-                <span className={`grid h-7 w-12 place-items-center rounded-full ${active ? "bg-soga-quiet text-soga-deep" : ""}`}>
+                <span className={`grid h-7 w-12 place-items-center rounded-full ${active ? "bg-ink text-surface" : ""}`}>
                   <Icon />
                 </span>
                 {label}
@@ -48,7 +48,7 @@ export function SideNav() {
               <Link
                 href={href}
                 aria-current={active ? "page" : undefined}
-                className={`flex min-h-11 items-center gap-3 rounded-full px-4 text-sm font-bold ${
+                className={`flex min-h-11 items-center gap-3 rounded-full px-4 text-sm font-semibold ${
                   active ? "bg-ink text-surface" : "text-ink-soft hover:bg-surface-deep"
                 }`}
               >

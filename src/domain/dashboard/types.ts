@@ -1,9 +1,19 @@
-/** DSH-02: the four headline numbers. All money in integer rupiah. */
+export const PERIODS = ["today", "week", "month"] as const;
+export type Period = (typeof PERIODS)[number];
+
+export const PERIOD_LABEL: Record<Period, string> = {
+  today: "Hari ini",
+  week: "Minggu ini",
+  month: "Bulan ini",
+};
+
+/** DSH-02: the four headline numbers for one period. All money in integer rupiah. */
 export interface DashboardKpis {
   spendIdr: number;
   budgetIdr: number;
-  leadsThisWeek: number;
-  leadsLastWeek: number;
+  leads: number;
+  /** Leads in the previous period of the same length, for the delta. */
+  leadsPrev: number;
   cplIdr: number;
   cplLimitIdr: number;
   ordersFromAds: number;
@@ -36,4 +46,11 @@ export function cplStatus(cplIdr: number, limitIdr: number): CplStatus {
 export function spendRatio(spendIdr: number, budgetIdr: number): number {
   if (budgetIdr <= 0) return 0;
   return Math.min(spendIdr / budgetIdr, 1);
+}
+
+/** One point of the leads vs orders trend shown on the summary chart. */
+export interface TrendPoint {
+  label: string;
+  leads: number;
+  orders: number;
 }
