@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens, option A "Kain Krem".
+ * Brand colours: Batik Organik company-profile tokens (ink, surface, soga, indigo).
+ * Semantic colours (danger/warning/success) are derived from natural-dye hues
+ * (mengkudu red, turmeric, leaf green) and checked for >= 4.5:1 text contrast on surface.
+ * To switch to option B or C, change only this block.
+ */
+@theme {
+  --color-ink: #17110c;
+  --color-ink-soft: #58514c;
+  --color-ink-muted: #736d69;
+  --color-surface: #fefdfb;
+  --color-surface-warm: #f8f5f1;
+  --color-surface-deep: #f1ece6;
+  --color-hairline: #e2ddd7;
+
+  --color-soga: #8c5d32;
+  --color-soga-deep: #6e4824;
+  --color-soga-quiet: #f4e5d4;
+  --color-indigo: #51689a;
+  --color-indigo-deep: #213156;
+  --color-indigo-quiet: #e3e8f2;
+
+  --color-danger: #a63a2b;
+  --color-danger-quiet: #f6dcd6;
+  --color-warning: #7f5300;
+  --color-warning-quiet: #f7e7c1;
+  --color-success: #3f6b3a;
+  --color-success-quiet: #dfebd8;
+
+  --font-display: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-karla), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius-card: 1.375rem;
+  --radius-tile: 1.125rem;
+
+  --shadow-sheet: 0 -8px 32px rgb(23 17 12 / 0.12);
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--color-surface-warm);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+h1,
+h2 {
+  text-wrap: balance;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-indigo);
+  outline-offset: 2px;
+}
+
+dialog::backdrop {
+  background: rgb(23 17 12 / 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
