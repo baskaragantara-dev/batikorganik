@@ -38,7 +38,7 @@ export function DecisionCard({
   return (
     <article aria-labelledby={titleId} aria-busy={busy} className="flex gap-3 rounded-card bg-surface p-5">
       {leading}
-      <div className="flex min-w-0 flex-1 flex-col gap-3">
+      <div className="flex min-w-0 flex-1 flex-col gap-3 lg:grid lg:grid-cols-[minmax(0,1fr)_11rem] lg:content-start lg:gap-x-8">
         <p className="flex items-center gap-1.5 text-xs font-semibold tracking-wide text-ink-muted uppercase">
           <SparkIcon width={14} height={14} />
           {KIND_LABEL[item.kind]} · {item.agent}
@@ -46,7 +46,7 @@ export function DecisionCard({
         <h3 id={titleId} className="text-base leading-snug font-semibold">
           {item.title}
         </h3>
-        <p className={`text-sm text-ink-soft ${compact ? "line-clamp-2" : ""}`}>{item.summary}</p>
+        <p className={`text-sm text-ink-soft ${compact ? "line-clamp-2 lg:line-clamp-1" : ""}`}>{item.summary}</p>
 
         <div className="flex flex-wrap gap-1.5">
           <Chip tone={RISK_TONE[item.risk]}>{RISK_LABEL[item.risk]}</Chip>
@@ -74,13 +74,13 @@ export function DecisionCard({
         ) : null}
 
         {check.allowed ? (
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 lg:col-start-2 lg:row-span-5 lg:row-start-1 lg:self-center">
             {check.selfApproved ? (
               <p className="text-xs text-ink-muted">
                 Anda satu-satunya penyetuju, jadi keputusan ini dicatat sebagai self-approved.
               </p>
             ) : null}
-            <div className="flex gap-2">
+            <div className="flex gap-2 lg:flex-col">
               <Button className="flex-1" onClick={onApprove} disabled={busy}>
                 {busy ? "Menyimpan…" : "Setujui"}
               </Button>
@@ -90,7 +90,9 @@ export function DecisionCard({
             </div>
           </div>
         ) : (
-          <p className="rounded-tile bg-surface-deep p-3 text-sm text-ink-soft">{check.reason}</p>
+          <p className="rounded-tile bg-surface-deep p-3 text-sm text-ink-soft lg:col-start-2 lg:row-span-5 lg:row-start-1 lg:self-center">
+            {check.reason}
+          </p>
         )}
       </div>
     </article>

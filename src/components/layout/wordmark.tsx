@@ -8,7 +8,7 @@ export function Wordmark() {
   return (
     <Link href="/" className="flex items-baseline gap-2" aria-label="Batik Organik Growth OS, ke Ringkasan">
       <span className="font-display text-xl font-medium tracking-tight">batikorganik</span>
-      <span className="rounded-full bg-ink px-2 py-0.5 text-[0.65rem] font-semibold tracking-wider text-surface uppercase">
+      <span className="rounded-full bg-ink px-2 py-0.5 text-[0.6rem] font-semibold tracking-wider whitespace-nowrap text-surface uppercase">
         Growth OS
       </span>
     </Link>

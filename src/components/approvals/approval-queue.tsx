@@ -82,7 +82,7 @@ export function ApprovalQueue({
 
   return (
     <div className="flex flex-col gap-5">
-      <div role="tablist" aria-label="Status approval" className="grid grid-cols-3 gap-2">
+      <div role="tablist" aria-label="Status approval" className="grid grid-cols-3 gap-2 lg:flex lg:w-fit lg:rounded-full lg:bg-surface lg:p-1">
         {TABS.map(({ status, label }) => {
           const active = tab === status;
           return (
@@ -95,7 +95,7 @@ export function ApprovalQueue({
               aria-controls="approval-panel"
               onClick={() => setTab(status)}
               className={`flex min-h-11 items-center justify-center gap-1.5 rounded-full px-2 text-sm font-semibold ${
-                active ? "bg-ink text-surface" : "bg-surface text-ink-soft"
+                active ? "bg-ink text-surface" : "bg-surface text-ink-soft lg:bg-transparent"
               }`}
             >
               {label}
